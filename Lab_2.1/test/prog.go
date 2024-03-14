@@ -11,12 +11,14 @@ func main() {
 		f, g int
 	)
 
-	d = 4
-	f, g = 5, 7
-	fmt.Println(b)
-	fmt.Println(a, c)
-	fmt.Println(e)
-	fmt.Println(d)
-	fmt.Println(f, g)
+	var (
+		ge string = "dedf"
+		ga int    = 3
+	)
+
+	var n int
+
+	n, d, f, g = 3, 4, 5, 7
+	fmt.Println(b, a, c, e, d, f, g, ge, ga, n)
 
 }
