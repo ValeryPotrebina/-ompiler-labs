@@ -5,5 +5,5 @@ public enum Type {
     OR,
     LPAREN,
     RPAREN,
-    END_OF_PROGRAM
+    END
 }

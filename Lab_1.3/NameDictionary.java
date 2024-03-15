@@ -26,4 +26,10 @@ public class NameDictionary {
         return names.get(pointer);
     }
 
+    public void outputDictionary(){
+        for (int i = 0; i < names.size(); i++) {
+            System.out.println(i + " "  + names.get(i));
+        }
+    }
+
 }

@@ -25,4 +25,12 @@ public class Compiler {
     public String getName(int pointer) {
         return nameDictionary.getName(pointer);
     }
+
+    public void outPutMessages(){
+        messageList.outPutMessages();
+    }
+
+    public void outputDictionary(){
+        nameDictionary.outputDictionary();
+    }
 }

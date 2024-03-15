@@ -8,7 +8,7 @@ public class MessageList {
     }
 
     public void addMessage(boolean isError, Position position, String text){
-        messages.put(position, new Message(isError, text));
+        messages.put(new Position(position), new Message(isError, text));
     }
 
     public void outPutMessages(){

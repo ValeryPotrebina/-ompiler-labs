@@ -9,6 +9,6 @@ abstract public class Token {
 
     @Override
     public String toString() {
-        return fragment + " " + type.toString();
+        return String.format("%6s  %-18s",type.toString(), fragment);
     }
 }

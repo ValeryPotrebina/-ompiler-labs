@@ -26,6 +26,12 @@ public class Scanner {
                             switch (position.current()) {
                                 case 'b', 'B' -> {
                                     position.next();
+                                    if (!position.isBinary()) {
+
+                                        compiler.addMessage(true, position, "Expected binary number, but found " +
+                                                ((position.current() == -1) ? "EOF" : (char)  position.current()));
+                                        return new NumberToken(start, position, 0);
+                                    }
                                     while (position.isBinary())
                                         position.next();
 
@@ -34,6 +40,11 @@ public class Scanner {
                                 }
                                 case 't', 'T' -> {
                                     position.next();
+                                    if (!position.isOcto()) {
+                                        compiler.addMessage(true, position, "Expected octo number, but found " +
+                                                ((position.current() == -1) ? "EOF" : (char)  position.current()));
+                                        return new NumberToken(start, position, 0);
+                                    }
                                     while (position.isOcto())
                                         position.next();
 
@@ -42,6 +53,11 @@ public class Scanner {
                                 }
                                 case 'x', 'X' -> {
                                     position.next();
+                                    if (!position.isHex()) {
+                                        compiler.addMessage(true, position, "Expected hex number, but found " +
+                                                ((position.current() == -1) ? "EOF" : (char)  position.current()));
+                                        return new NumberToken(start, position, 0);
+                                    }
                                     while (position.isHex())
                                         position.next();
 
@@ -72,6 +88,6 @@ public class Scanner {
 
             }
         }
-        return new SpecToken(Type.END_OF_PROGRAM, position, position);
+        return new SpecToken(Type.END, position, position);
     }
 }

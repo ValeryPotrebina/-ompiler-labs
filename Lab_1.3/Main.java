@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main {
@@ -18,6 +17,10 @@ public class Main {
             System.out.println(token +
                     (token.type == Type.IDENT ? ": "  + compiler.getName(((IdentToken) token).getPointer()) : "") +
                     (token.type == Type.NUMBER ? ": "  + ((NumberToken) token).getNumber() : "" ));
-        } while (token.type != Type.END_OF_PROGRAM);
+        } while (token.type != Type.END);
+        System.out.println("----------------MESSAGES-----------------");
+        compiler.outPutMessages();
+        System.out.println("----------------IDENTS-----------------");
+        compiler.outputDictionary();
     }
 }
