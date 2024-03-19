@@ -19,6 +19,14 @@ public class Position implements Comparable<Position>{
         index = otherPosition.index;
     }
 
+    public int getLine() {
+        return line;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public int getIndex() {
         return index;
     }
@@ -41,33 +49,6 @@ public class Position implements Comparable<Position>{
             index++;
         }
         return this;
-    }
-
-    public boolean isWhiteSpace() {
-        return index != program.length() && Character.isWhitespace(program.charAt(index));
-    }
-
-
-    public boolean isLetter(){
-        return index != program.length() && Character.isLetter(program.charAt(index));
-    }
-
-    public boolean isDigit() {
-        return index != program.length() && Character.isDigit(program.charAt(index));
-    }
-
-    public boolean isHex() {
-        return index != program.length() && (Character.isDigit(program.charAt(index))  ||
-                        (program.charAt(index) >= 'A' && program.charAt(index) <= 'F') ||
-                        (program.charAt(index) >= 'a' && program.charAt(index) <= 'f'));
-    }
-
-    public boolean isBinary() {
-        return index != program.length() && (program.charAt(index) == '1' || program.charAt(index) == '0');
-    }
-
-    public boolean isOcto() {
-        return index != program.length() && (program.charAt(index) >= '0' && program.charAt(index) <= '7');
     }
 
     public boolean isNewLine() {
