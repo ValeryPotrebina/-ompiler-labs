@@ -42,6 +42,9 @@ public class Scanner {
             compiler.addComment(start, position, program.substring(start.getIndex(), position.getIndex()));
             state = 0;
         }
+        if (state == 14) {
+            state = 0;
+        }
         if (state == 0) {
             return new SpecToken(DomainTag.END, position, position);
         }
