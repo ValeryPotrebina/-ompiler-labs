@@ -19,14 +19,6 @@ public class Position implements Comparable<Position>{
         index = otherPosition.index;
     }
 
-    public int getLine() {
-        return line;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
     public int getIndex() {
         return index;
     }
