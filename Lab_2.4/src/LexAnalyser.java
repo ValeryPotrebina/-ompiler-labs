@@ -8,23 +8,21 @@ public class LexAnalyser {
 
     ArrayList<Token> tokens;
     ArrayList<String> errors;
-    private final String IDENT_REGEX = "[a-zA-Z][a-zA-Z0-9]*";
+    private int position;
+    private final String IDENT_REGEX = "[a-zA-Z][a-zA-Z0-9_]*";
     private final String SPEC_REGEX = "(\\[\\])|[()=:;,/|]";
     private final String KW_REGEX = "%(class|tokens|types|methods|grammar|axiom|end|rep)";
     private final String SKIP_REGEX = "(\\s+)|(\\$[^\n]*)";
     private final Pattern PATTERN = Pattern.compile("(?<ident>^" + IDENT_REGEX + ")|(?<spec>^" + SPEC_REGEX + ")|(?<kw>^" + KW_REGEX + ")|(?<skip>^" + SKIP_REGEX + ")");
-
-
-    private final String NUMBER_REGEX = "\\d[\\d_]*";
-    private final String STRING_REGEX = "\\\"([^\\\"\\\\]*(\\\\n|\\\\t|\\\\\\\\|\\\\\\\")?)*\\\"";
     private final Pattern REPAIR = Pattern.compile("[^\"\\d]*[\"\\d]");
 //REPAIR - ВОССТАНОВЛЕНИЕ
     public LexAnalyser(String path) {
         this.tokens = new ArrayList<>();
         this.errors = new ArrayList<>();
+        position = 0;
         ArrayList<String> lines = getText(path);
         parse(lines);
-        tokens.forEach(System.out::println);
+//        tokens.forEach(System.out::println);
         errors.forEach(System.out::println);
     }
 
@@ -149,5 +147,12 @@ public class LexAnalyser {
         return arraylistLines;
     }
 
+    public ArrayList<Token> getTokens() {
+        return tokens;
+    }
+
+    public Token nextToken() {
+        return tokens.get(position++);
+    }
 
 }

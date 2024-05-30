@@ -73,35 +73,30 @@ KW_REP -> '%rep'
 KW_END -> '%end'
 
 Specification =>
-KW_CLASS ClassName KW_TOKENS Tokens KW_TYPES TypesDefs KW_METHODS MethodDefs KW_GRAMMAR RulesList KW_AXIOM Axiom KW_END
+KW_CLASS IDENT KW_TOKENS Tokens KW_TYPES TypesDefs KW_METHODS MethodDefs KW_GRAMMAR RulesList KW_AXIOM Axiom KW_END
 
-ClassName => IDENT
+ClassName   => IDENT
 
-Type=> IDENT | IDENT ARR_TYPE
-Tokens => Tokens Token | e
-Token => IDENT
+Type        => IDENT ARR_TYPE?
+Tokens      => IDENT*
 
-TypesDefs => TypeDefs TypeDef | e
-TypeDef => TypeContent COLON Type SEMICOLON
-TypeContent => TypeContent COMMA IDENT | IDENT
 
-MethodDefs => MethodDefs MethodDef | e
-MethodDef => MethodType MethodName LPAR MethodArgs RPAR SEMICOLON
-MethodType => Type
-MethodName => IDENT
-MethodArgs =>  MethodArgsList | e
-MethodArgsList => MethodArgsList COMMA Type | Type
+TypesDefs   => TypeDef*
+TypeDef     => TypeContent COLON Type SEMICOLON
+TypeContent => IDENT TypeContent2*
+TypeContent2=> COMMA IDENT
 
-RulesList => RulesList Rule | e
-Rule => RuleHead EQUAL RuleBody SEMICOLON
-RuleHead => IDENT
-RuleBody => RuleBody Alter | Alter
-Alter => AlterContent AlterMethod
-AlterMethod => SLASH IDENT | e
-AlterContent => AlterContent AlterElement | e
-AlterElement => ElemRep ElemContent
-ElemRep => KW_REP | e
-ElemContent => IDENT OR LPAR RuleBody RPAR
+MethodDefs => MethodDef*
+MethodDef => Type IDENT LPAR MethodArgs? RPAR SEMICOLON
+MethodArgs =>  Type (COMMA Type)*
 
+RulesList => Rule*
+Rule => IDENT EQUAL RuleBody SEMICOLON
+RuleBody => (Alter OR)* Alter
+Alter => AlterContent AlterMethod?
+AlterContent => AlterElement*
+AlterElement => KW_REP? ElemContent
+AlterMethod => SLASH IDENT
+ElemContent => IDENT | LPAR RuleBody RPAR
 
 Axiom => IDENT
