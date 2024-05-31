@@ -93,7 +93,7 @@ public class SyntaxAnalyser {
             content = parseRuleBody();
             parseSpec(Type.RPAREN);
         } else {
-            errorHandling("Expected ident or lparen but found " + current.getValue(), current.getCoords());
+            errorHandling("Expected name or lparen but found " + current.getValue(), current.getCoords());
         }
         return new Tree.AlterElem(isRep, content);
     }
