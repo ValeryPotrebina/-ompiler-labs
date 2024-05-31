@@ -92,8 +92,8 @@ MethodArgs =>  Type (COMMA Type)*
 
 RulesList => Rule*
 Rule => IDENT EQUAL RuleBody SEMICOLON
-RuleBody => (Alter OR)* Alter
-Alter => AlterContent AlterMethod?
+RuleBody => Alter (OR Alter)*
+Alter => AlterContent AlterMethod? 
 AlterContent => AlterElement*
 AlterElement => KW_REP? ElemContent
 AlterMethod => SLASH IDENT

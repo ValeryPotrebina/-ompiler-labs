@@ -13,6 +13,9 @@ public class Tree {
     public record SimpleType(String ident){
 
     }
+    public record Specification(String className, Tokens tokens, TypeDefs typeDefs, MethodDefs methodDefs, Rules rules, Token axiom){
+
+    }
     public record ArrType(Record type){
         public ArrType {
             if (!(type instanceof SimpleType || type instanceof ArrType)) {
@@ -35,7 +38,23 @@ public class Tree {
             }
         }
     }
-    public record Specification(String className, Tokens tokens, TypeDefs typeDefs, MethodDefs methodDefs){
+    public record Rules(ArrayList<Rule> rules){
 
-     }
+    }
+    public record Rule(Token token, RuleBody ruleBody){
+
+    }
+
+    public record RuleBody(ArrayList<Alter> alters){}
+
+    public record Alter(ArrayList<AlterElem> alterElems, String alterMethod){}
+    public record AlterElem(boolean rep, Record content){
+        public AlterElem {
+            if (!(content instanceof Token || content instanceof RuleBody)){
+                throw new RuntimeException("content must be Token or RuleBody");
+            }
+        }
+    }
+
+
 }

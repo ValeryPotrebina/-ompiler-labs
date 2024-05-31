@@ -5,10 +5,7 @@ public class Main {
     public static void main(String[] args) {
        LexAnalyser lexAnalyser = new LexAnalyser(PATH);
        SyntaxAnalyser syntaxAnalyser = new SyntaxAnalyser(lexAnalyser);
-        System.out.println(syntaxAnalyser.parse());
-//        System.out.println(lexAnalyser);
-
-
+       System.out.println(syntaxAnalyser.parse());
     }
 
 }

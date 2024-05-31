@@ -152,6 +152,9 @@ public class LexAnalyser {
     }
 
     public Token nextToken() {
+        if(position >= tokens.size()){
+            return null;
+        }
         return tokens.get(position++);
     }
 
