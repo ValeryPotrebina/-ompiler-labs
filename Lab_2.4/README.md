@@ -52,7 +52,6 @@ Axiom => IDENT
 
 # Грамматика
 
-
 IDENT => [a-zA-Z][a-zA-Z0-9]*
 ARR_TYPE =? '[]'
 LPAR => '('
@@ -80,7 +79,6 @@ ClassName   => IDENT
 Type        => IDENT ARR_TYPE?
 Tokens      => IDENT*
 
-
 TypesDefs   => TypeDef*
 TypeDef     => TypeContent COLON Type SEMICOLON
 TypeContent => IDENT TypeContent2*
@@ -90,7 +88,7 @@ MethodDefs => MethodDef*
 MethodDef => Type IDENT LPAR MethodArgs? RPAR SEMICOLON
 MethodArgs =>  Type (COMMA Type)*
 
-RulesList => Rule*
+Rules => Rule*
 Rule => IDENT EQUAL RuleBody SEMICOLON
 RuleBody => Alter (OR Alter)*
 Alter => AlterContent AlterMethod? 

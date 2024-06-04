@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Optional;
 
-public class Tree {
-    public record Rule(String name, ArrayList<Record> children){
+public abstract class Tree {
+    public int index;
+    public Tree() {
+        this.index = 0;
     }
-    public record Token(Type type){}
 
-    public record Graph(String name, ArrayList<Record> children){}
 }

@@ -8,15 +8,9 @@ public class Main {
     public static void main(String[] args) {
         LexAnalyser lexAnalyser = new LexAnalyser(PATH);
         SyntaxAnalyser syntaxAnalyser = new SyntaxAnalyser(lexAnalyser);
-        ArrayList<Record> tree = syntaxAnalyser.parse();
+        Rule initRule = syntaxAnalyser.parse();
+        System.out.println(initRule.printGraph());
 
     }
 
-//    public static String resultToGraph(ArrayList<Record> trees) {
-//
-//    }
-//
-//    public static String treeToGraph(Record current, ArrayList<Record> trees){
-//
-//    }
 }

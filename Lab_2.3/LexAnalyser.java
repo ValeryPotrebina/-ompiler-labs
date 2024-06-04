@@ -24,7 +24,7 @@ public class LexAnalyser {
         position = 0;
         ArrayList<String> lines = getText(path);
         parse(lines);
-        tokens.forEach(System.out::println);
+//        tokens.forEach(System.out::println);
         errors.forEach(System.out::println);
     }
 
